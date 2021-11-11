@@ -12,7 +12,7 @@ class User extends BaseController
 {
     use ResponseTrait;
 
-    public function view($id)
+    public function view()
     {
         $user = AuthUser::get();
         return $this->respond($user);
