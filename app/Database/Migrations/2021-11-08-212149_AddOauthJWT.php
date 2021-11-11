@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Database\Migrations;
+
+use CodeIgniter\Database\Migration;
+
+class AddOauthJWT extends Migration
+{
+    public function up()
+    {
+        $this->forge->addField([
+            'client_id'    => [
+                'type'           => 'VARCHAR',
+                'constraint'     => 80,
+            ],
+            'subject'    => [
+                    'type'           => 'VARCHAR',
+                    'constraint'     => 80,
+                    'null' => true,
+            ],
+            'public_key'    => [
+                    'type'           => 'VARCHAR',
+                    'constraint'     => 2000,
+            ],
+        ]);
+        $this->forge->addKey('scope', true);
+        $this->forge->createTable('oauth_jwt');
+    }
+
+    public function down()
+    {
+        $this->forge->dropTable('oauth_jwt');
+    }
+}
