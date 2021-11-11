@@ -41,8 +41,7 @@ class Gallery extends ResourceController
                 'keywords' => $this->request->getVar('keywords'),
                 'description' => $this->request->getVar('description'),
                 'user_id' => $user['id'],
-                // auto generate a code
-                // 'code' => ''
+                'code' => uniqid()
             ];
 
 
