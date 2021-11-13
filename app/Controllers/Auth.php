@@ -23,10 +23,9 @@ class Auth extends BaseController
 
         $rules = [
             'name' => 'required|string',
-			'email' => 'required|email',
+			'username' => 'required|valid_email',
 			'password' => 'required|string',
 			'oauth_uid' => 'required|string',
-			'oauth_provider' => 'required|string',
 			'grant_type' => 'required|string',
         ];
 
