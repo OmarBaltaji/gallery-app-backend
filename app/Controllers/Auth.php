@@ -12,9 +12,6 @@ class Auth extends BaseController
     use ResponseTrait;
 
     public function registerOrLogin() {
-        $name = $this->request->getVar('name');
-        log_message('info', $name);
-
         $user_model = new UserModel();
         $user = $user_model->where('oauth_uid', $this->request->getVar('oauth_uid'))->first(); // Find user by google id to see if they already exist
         log_message('info', json_encode($user));
@@ -22,6 +19,19 @@ class Auth extends BaseController
         if($user) { // User already exists
             $oauthResponse = $this->login();
             return $this->respond([$user, $oauthResponse['body']], $oauthResponse['code']);
+        }
+
+        $rules = [
+            'name' => 'required|string',
+			'email' => 'required|email',
+			'password' => 'required|string',
+			'oauth_uid' => 'required|string',
+			'oauth_provider' => 'required|string',
+			'grant_type' => 'required|string',
+        ];
+
+        if (! $this->validate($rules)) {
+            return $this->fail(implode('<br>', $this->validator->getErrors()));
         }
 
         // Else create new user
