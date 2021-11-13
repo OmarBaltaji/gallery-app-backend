@@ -62,6 +62,6 @@ class Filters extends BaseConfig
      * @var array
      */
     public $filters = [
-        'oauthfilter' => ['before' => ['/user', '/gallery']]
+        'oauthfilter' => ['before' => ['/gallery', '/gallery/*', '/user', '/picture', '/picture/*']]
     ];
 }
