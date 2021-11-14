@@ -28,7 +28,7 @@ class Gallery extends ResourceController
     {
         $user = AuthUser::get();
         $rules = [
-            'name' => 'required|string',
+            'name' => 'required|string|max_length[20]',
 			'keywords' => 'required|string',
 			'description' => 'string',
         ];
@@ -58,7 +58,7 @@ class Gallery extends ResourceController
 
     public function update($id = null) {
         $rules = [
-            'name' => 'required|string',
+            'name' => 'required|string|max_length[20]',
 			'keywords' => 'required|string',
 			'description' => 'string',
         ];
