@@ -23,7 +23,7 @@ class Database extends Config
      *
      * @var string
      */
-    public $defaultGroup = 'SqlServer';
+    public $defaultGroup = '';
 
     /**
      * The mysql database connection.
@@ -56,11 +56,11 @@ class Database extends Config
      * @var array
      */
     public $SqlServer = [
-		'DSN'      => 'sqlsrv:dbname=gallery_app;host=LAPTOP-7JAV6MP7',
-		'hostname' => 'LAPTOP-7JAV6MP7',
-		'username' => 'sa',
-		'password' => 'Bolto_23@yt',
-		'database' => 'gallery_app',
+		'DSN'      => '',
+		'hostname' => '',
+		'username' => '',
+		'password' => '',
+		'database' => '',
 		'DBDriver' => 'sqlsrv',
 		'DBPrefix' => '',
 		'pConnect' => false,
@@ -111,5 +111,7 @@ class Database extends Config
         if (ENVIRONMENT === 'testing') {
             $this->defaultGroup = 'tests';
         }
+
+        $this->defaultGroup = getenv('defaultGroup');
     }
 }
