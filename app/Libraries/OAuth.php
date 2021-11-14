@@ -11,18 +11,13 @@ class OAuth {
     }
 
     public function init() {
-        $dsn = getenv('database.default.dsn');
-        $username = getenv('database.default.username');
-        $password = getenv('database.default.password');
-        
+        $defaultGroup = getenv('defaultGroup');
+        $dsn = getenv("database.$defaultGroup.dsn");
+        $username = getenv("database.$defaultGroup.username");
+        $password = getenv("database.$defaultGroup.password");
+
         $storage = new CustomOauthStorage(['dsn' => $dsn, 'username' => $username, 'password' => $password]);
         $this->server = new \OAuth2\Server($storage);
         $this->server->addGrantType(new \OAuth2\GrantType\UserCredentials($storage));
-        
-        // $clients = array('testclient' => array('client_secret' => 'testsecret'));
-        // $storage = new \OAuth2\Storage\Memory(array('client_credentials' => $clients));
-        // create the grant type
-        // $grantType = new \OAuth2\GrantType\ClientCredentials($storage);
-        // $this->server->addGrantType($grantType);
     }
 }
