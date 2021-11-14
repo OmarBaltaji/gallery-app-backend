@@ -6,7 +6,6 @@ use CodeIgniter\Model;
 
 class GalleryModel extends Model
 {
-    protected $DBGroup              = 'default';
     protected $table                = 'galleries';
     protected $primaryKey           = 'id';
     protected $useAutoIncrement     = true;

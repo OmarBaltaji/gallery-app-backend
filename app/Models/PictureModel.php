@@ -6,7 +6,6 @@ use CodeIgniter\Model;
 
 class PictureModel extends Model
 {
-    protected $DBGroup              = 'default';
     protected $table                = 'pictures';
     protected $primaryKey           = 'id';
     protected $useAutoIncrement     = true;
