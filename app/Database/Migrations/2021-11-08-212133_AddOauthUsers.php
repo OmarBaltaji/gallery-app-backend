@@ -12,7 +12,7 @@ class AddOauthUsers extends Migration
             'username'    => [
                     'type'           => 'VARCHAR',
                     'constraint'     => 80,
-                    'null' => true,
+                    'null' => false,
             ],
             'password'       => [
                     'type'       => 'VARCHAR',
